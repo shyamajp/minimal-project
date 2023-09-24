@@ -18,13 +18,7 @@ const people = [
 const app = express();
 
 // Database
-const client = new Client({
-  user: "user",
-  host: process.env.POSTGRES_SERVICE_SERVICE_HOST,
-  database: "db",
-  password: "pass",
-  port: 5432,
-});
+const client = new Client(); // injected from PG* variables
 client.connect();
 
 app.get("/", (req, res) => {

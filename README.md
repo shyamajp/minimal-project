@@ -16,9 +16,12 @@ minikube docker-env | Invoke-Expression
 ```
 
 2. build image
-   `docker build -t node-app .`
+   `docker build --no-cache -t backend:db .`
 
-   1. !important to have `imagePullPolicy: IfNotPresent` or `imagePullPolicy: Never` in `app-deployment.yaml`
+   1. !important to have `imagePullPolicy: IfNotPresent` or `imagePullPolicy: Never` in `backend.yaml`
 
-3. assign external service a public address
-   `minikube service app-service`
+3. apply deployment file
+   `kubectl apply -f .\backend.yaml`
+
+4. assign external service a public address
+   `minikube service backend-service`
